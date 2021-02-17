@@ -1,7 +1,7 @@
 Fm.escape.go(str: String, result: String): String
   case str {
     nil: String.reverse(result)
-    cons: Fm.escape.go(str.tail, Fm.escape.char(str.head) | result)
+    cons: Fm.escape.go(str.tail, String.reverse(Fm.escape.char(str.head)) | result)
   }
 
 Fm.escape(str: String): String

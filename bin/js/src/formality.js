@@ -21243,7 +21243,7 @@ module.exports = (function() {
                 } else {
                     var $8595 = self.charCodeAt(0);
                     var $8596 = self.slice(1);
-                    var $8597 = Fm$escape$go$($8596, (Fm$escape$char$($8595) + _result$2));
+                    var $8597 = Fm$escape$go$($8596, (String$reverse$(Fm$escape$char$($8595)) + _result$2));
                     return $8597;
                 };
             })();
