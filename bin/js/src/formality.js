@@ -21226,20 +21226,36 @@ module.exports = (function() {
     };
     const Fm$escape$char = x0 => Fm$escape$char$(x0);
 
+    function Fm$escape$go$(_str$1, _result$2) {
+        var Fm$escape$go$ = (_str$1, _result$2) => ({
+            ctr: 'TCO',
+            arg: [_str$1, _result$2]
+        });
+        var Fm$escape$go = _str$1 => _result$2 => Fm$escape$go$(_str$1, _result$2);
+        var arg = [_str$1, _result$2];
+        while (true) {
+            let [_str$1, _result$2] = arg;
+            var R = (() => {
+                var self = _str$1;
+                if (self.length === 0) {
+                    var $8594 = String$reverse$(_result$2);
+                    return $8594;
+                } else {
+                    var $8595 = self.charCodeAt(0);
+                    var $8596 = self.slice(1);
+                    var $8597 = Fm$escape$go$($8596, (Fm$escape$char$($8595) + _result$2));
+                    return $8597;
+                };
+            })();
+            if (R.ctr === 'TCO') arg = R.arg;
+            else return R;
+        }
+    };
+    const Fm$escape$go = x0 => x1 => Fm$escape$go$(x0, x1);
+
     function Fm$escape$(_str$1) {
-        var self = _str$1;
-        if (self.length === 0) {
-            var $8595 = String$nil;
-            var $8594 = $8595;
-        } else {
-            var $8596 = self.charCodeAt(0);
-            var $8597 = self.slice(1);
-            var _head$4 = Fm$escape$char$($8596);
-            var _tail$5 = Fm$escape$($8597);
-            var $8598 = (_head$4 + _tail$5);
-            var $8594 = $8598;
-        };
-        return $8594;
+        var $8598 = Fm$escape$go$(_str$1, "");
+        return $8598;
     };
     const Fm$escape = x0 => Fm$escape$(x0);
 
@@ -23877,6 +23893,7 @@ module.exports = (function() {
         'Bits.to_nat': Bits$to_nat,
         'U16.show_hex': U16$show_hex,
         'Fm.escape.char': Fm$escape$char,
+        'Fm.escape.go': Fm$escape$go,
         'Fm.escape': Fm$escape,
         'Fm.Core.show': Fm$Core$show,
         'Fm.Defs.core': Fm$Defs$core,

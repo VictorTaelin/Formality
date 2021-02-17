@@ -1,9 +1,8 @@
-Fm.escape(str: String): String
+Fm.escape.go(str: String, result: String): String
   case str {
-    nil:
-      String.nil,
-    cons:
-      let head = Fm.escape.char(str.head);
-      let tail = Fm.escape(str.tail);
-      String.concat(head, tail)
+    nil: String.reverse(result)
+    cons: Fm.escape.go(str.tail, Fm.escape.char(str.head) | result)
   }
+
+Fm.escape(str: String): String
+  Fm.escape.go(str, "")
